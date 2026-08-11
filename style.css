@@ -1,0 +1,2389 @@
+/* =========================================================
+   BARASHW — GOTHIC LUXURY STYLE
+   Расположение блоков не меняется
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+
+/* =========================================================
+   ОСНОВНЫЕ ПЕРЕМЕННЫЕ
+========================================================= */
+
+:root {
+    --bg: #0b090c;
+    --bg-soft: #100d11;
+    --bg-card: rgba(25, 20, 25, 0.72);
+
+    --red: #720f1d;
+    --red-light: #9c1b2c;
+    --red-dark: #3d0d16;
+
+    --text: #e8e3e5;
+    --text-soft: #aaa3a7;
+    --silver: #b8afb4;
+
+    --border: rgba(184, 175, 180, 0.18);
+    --border-red: rgba(114, 15, 29, 0.55);
+
+    --shadow:
+        0 25px 80px rgba(0, 0, 0, 0.55);
+
+    --red-glow:
+        0 0 25px rgba(114, 15, 29, 0.25),
+        0 0 70px rgba(114, 15, 29, 0.12);
+
+    --transition:
+        0.35s cubic-bezier(.22, .61, .36, 1);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+}
+
+body {
+    min-width: 320px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(114, 15, 29, 0.14),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 10% 45%,
+            rgba(80, 20, 50, 0.07),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 75%,
+            rgba(114, 15, 29, 0.06),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #09080a 0%,
+            #0d0a0e 35%,
+            #0a090b 100%
+        );
+
+    color: var(--text);
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    overflow-x: hidden;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   ТЕКСТУРНЫЙ СЛОЙ
+========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    opacity: 0.055;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,.8) 0.6px,
+            transparent 0.6px
+        );
+
+    background-size: 5px 5px;
+
+    mix-blend-mode: overlay;
+}
+
+
+/* =========================================================
+   ВИНЬЕТКА
+========================================================= */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 9998;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 48%,
+            rgba(0,0,0,.45) 100%
+        );
+}
+
+
+/* =========================================================
+   ОБЩИЕ ССЫЛКИ
+========================================================= */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   ШАПКА
+========================================================= */
+
+.header {
+    width: 100%;
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    z-index: 100;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.62),
+            transparent
+        );
+
+    border-bottom:
+        1px solid rgba(255,255,255,.035);
+}
+
+.header__container {
+    width: 100%;
+    max-width: 1500px;
+
+    margin: 0 auto;
+
+    padding: 22px 55px;
+}
+
+.header__nav {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 40px;
+}
+
+
+/* =========================================================
+   ЛОГОТИП
+========================================================= */
+
+.header__logo-link {
+    display: flex;
+
+    align-items: center;
+
+    flex-shrink: 0;
+
+    position: relative;
+}
+
+.header__logo-link::after {
+    content: "";
+
+    position: absolute;
+
+    width: 85%;
+
+    height: 85%;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(140, 20, 40, .22),
+            transparent 70%
+        );
+
+    filter: blur(18px);
+
+    z-index: -1;
+
+    opacity: .7;
+
+    transition:
+        opacity var(--transition),
+        transform var(--transition);
+}
+
+.header__logo {
+    width: 320px;
+    height: auto;
+    display: block;
+    flex-shrink: 0;
+
+    /* чтобы логотип был лучше виден на тёмном фоне */
+    filter:
+        brightness(1.35)
+        contrast(1.15)
+        drop-shadow(0 0 12px rgba(255, 255, 255, 0.08));
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.header__logo:hover {
+    transform: scale(1.04);
+
+    filter:
+        brightness(1.5)
+        contrast(1.2)
+        drop-shadow(0 0 18px rgba(150, 0, 0, 0.25));
+}
+
+
+/* =========================================================
+   НАВИГАЦИЯ
+========================================================= */
+
+.header__list {
+    list-style: none;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 42px;
+
+    flex: 1;
+}
+
+.header__list-link {
+    position: relative;
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    color: #c9c3c6;
+
+    transition:
+        color var(--transition);
+}
+
+.header__list-link::before {
+    content: "✦";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -19px;
+
+    transform:
+        translateX(-50%)
+        scale(.5);
+
+    color: var(--red-light);
+
+    opacity: 0;
+
+    transition:
+        opacity var(--transition),
+        transform var(--transition);
+}
+
+.header__list-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--red-light),
+            transparent
+        );
+
+    transition:
+        width var(--transition);
+}
+
+.header__list-link:hover {
+    color: #fff;
+
+    text-shadow:
+        0 0 14px rgba(156,27,44,.5);
+}
+
+.header__list-link:hover::after {
+    width: 100%;
+}
+
+.header__list-link:hover::before {
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        scale(1);
+}
+
+
+/* =========================================================
+   СОЦИАЛЬНЫЕ ИКОНКИ
+========================================================= */
+
+.header__socials {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+.header__social {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(184,175,180,.2);
+
+    background:
+        rgba(255,255,255,.025);
+
+    border-radius: 50%;
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+.header__social img {
+    width: 18px;
+    height: 18px;
+
+    object-fit: contain;
+
+    opacity: .72;
+
+    transition:
+        opacity var(--transition),
+        transform var(--transition);
+}
+
+.header__social:hover {
+    transform: translateY(-3px);
+
+    border-color:
+        rgba(156,27,44,.7);
+
+    background:
+        rgba(114,15,29,.15);
+
+    box-shadow:
+        0 0 20px rgba(114,15,29,.22);
+}
+
+.header__social:hover img {
+    opacity: 1;
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        150px 30px
+        100px;
+}
+
+
+/* свет за заголовком */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(114,15,29,.18),
+            rgba(70,10,25,.07) 35%,
+            transparent 70%
+        );
+
+    filter: blur(15px);
+
+    animation:
+        heroGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+    from {
+        transform:
+            translate(-50%, -50%)
+            scale(.9);
+
+        opacity: .65;
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            scale(1.1);
+
+        opacity: 1;
+    }
+}
+
+
+/* декоративная пыль */
+
+.hero::after {
+    content: "✦     ·          ✧              ·       ✦";
+
+    position: absolute;
+
+    width: 100%;
+
+    left: 0;
+
+    bottom: 15%;
+
+    color:
+        rgba(184,175,180,.17);
+
+    font-size: 14px;
+
+    letter-spacing: 35px;
+
+    animation:
+        floatingDust 9s ease-in-out infinite;
+}
+
+@keyframes floatingDust {
+    0%,100% {
+        transform: translateX(-15px);
+        opacity: .35;
+    }
+
+    50% {
+        transform: translateX(15px);
+        opacity: .75;
+    }
+}
+
+.hero__content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 900px;
+}
+
+
+/* =========================================================
+   HERO SMALL
+========================================================= */
+
+.hero__small {
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size: 12px;
+
+    letter-spacing: 6px;
+
+    color: var(--silver);
+
+    margin-bottom: 22px;
+
+    opacity: .8;
+
+    position: relative;
+}
+
+.hero__small::after {
+    content: "✦";
+
+    display: block;
+
+    margin-top: 16px;
+
+    color: var(--red-light);
+
+    font-size: 10px;
+
+    opacity: .8;
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero h1 {
+    margin: 10px 0 26px;
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(64px, 10vw, 145px);
+
+    font-weight: 500;
+
+    letter-spacing:
+        clamp(8px, 2vw, 20px);
+
+    line-height: .9;
+
+    color: #eee9eb;
+
+    text-shadow:
+        0 0 12px rgba(255,255,255,.08),
+        0 0 45px rgba(114,15,29,.32);
+
+    animation:
+        titlePulse 5s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+    0%,100% {
+        text-shadow:
+            0 0 12px rgba(255,255,255,.08),
+            0 0 35px rgba(114,15,29,.22);
+    }
+
+    50% {
+        text-shadow:
+            0 0 18px rgba(255,255,255,.12),
+            0 0 65px rgba(114,15,29,.4);
+    }
+}
+
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.hero__text {
+    max-width: 570px;
+
+    margin: 0 auto 38px;
+
+    color: var(--text-soft);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    letter-spacing: .5px;
+}
+
+
+/* =========================================================
+   КНОПКА
+========================================================= */
+
+.hero__button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 210px;
+
+    min-height: 58px;
+
+    padding: 15px 35px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(184,175,180,.5);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(114,15,29,.9),
+            rgba(61,13,22,.95)
+        );
+
+    color: #f2edef;
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.45),
+        0 0 25px rgba(114,15,29,.15);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+.hero__button::before {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 100%;
+
+    left: -150px;
+    top: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.2),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left .7s ease;
+}
+
+.hero__button::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: 13px;
+
+    color: rgba(255,255,255,.5);
+
+    font-size: 9px;
+}
+
+.hero__button:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(184,175,180,.8);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.55),
+        0 0 35px rgba(114,15,29,.35);
+}
+
+.hero__button:hover::before {
+    left: 120%;
+}
+
+
+/* =========================================================
+   ОБЩИЕ СЕКЦИИ
+========================================================= */
+
+.price,
+.faq,
+.reviews,
+.location {
+    position: relative;
+
+    width: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.008),
+            transparent
+        );
+}
+
+.price::before,
+.faq::before,
+.reviews::before,
+.location::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 40px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: rgba(156,27,44,.55);
+
+    font-size: 12px;
+
+    text-shadow:
+        0 0 15px rgba(156,27,44,.4);
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.price {
+    padding:
+        120px 70px
+        140px;
+}
+
+.price__content {
+    max-width: 1050px;
+
+    margin: 0 auto;
+}
+
+.price__small-title,
+.faq__small-title,
+.reviews__small-title,
+.location__small-title {
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    color: var(--red-light);
+
+    letter-spacing: 5px;
+
+    font-size: 11px;
+
+    text-align: center;
+
+    margin-bottom: 14px;
+}
+
+.price__title,
+.faq__title,
+.reviews__title,
+.location__title {
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(38px, 5vw, 64px);
+
+    font-weight: 500;
+
+    letter-spacing: 7px;
+
+    text-align: center;
+
+    color: #eee8ea;
+
+    text-shadow:
+        0 0 35px rgba(114,15,29,.2);
+}
+
+.price__subtitle,
+.faq__subtitle,
+.reviews__subtitle,
+.location__subtitle {
+    text-align: center;
+
+    color: var(--text-soft);
+
+    margin-top: 15px;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   PRICE ITEMS
+========================================================= */
+
+.price__list {
+    margin-top: 55px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.price__item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 25px 30px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(255,255,255,.025),
+            rgba(255,255,255,.008)
+        );
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.2);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+.price__item::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 2px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            var(--red-light),
+            transparent
+        );
+
+    transform: scaleY(.2);
+
+    opacity: 0;
+
+    transition:
+        transform var(--transition),
+        opacity var(--transition);
+}
+
+.price__item:hover {
+    transform: translateX(7px);
+
+    border-color:
+        rgba(114,15,29,.45);
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(114,15,29,.09),
+            rgba(255,255,255,.015)
+        );
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.35),
+        0 0 25px rgba(114,15,29,.08);
+}
+
+.price__item:hover::before {
+    transform: scaleY(1);
+
+    opacity: 1;
+}
+
+.price__item h3 {
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    line-height: 1.45;
+
+    color: #e5dfe2;
+}
+
+.price__item p {
+    margin-top: 7px;
+
+    color: #8f888c;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.price__item strong {
+    flex-shrink: 0;
+
+    color: #ddd5d9;
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   PRICE IMPORTANT
+========================================================= */
+
+.price__important {
+    margin-top: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 25px 30px;
+
+    border:
+        1px solid rgba(156,27,44,.45);
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(114,15,29,.16),
+            rgba(114,15,29,.04)
+        );
+
+    box-shadow:
+        var(--red-glow);
+}
+
+.price__important span {
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    letter-spacing: 3px;
+
+    font-size: 12px;
+
+    color: #b9adb2;
+}
+
+.price__important strong {
+    color: #eee;
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+}
+
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.price__education {
+    margin-top: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 28px 30px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.018);
+}
+
+.price__education h3 {
+    font-size: 18px;
+
+    font-weight: 500;
+}
+
+.price__education p {
+    margin-top: 7px;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+}
+
+.price__education strong {
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    color: #ddd5d9;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq {
+    padding:
+        130px 70px
+        150px;
+}
+
+.faq__header {
+    margin-bottom: 55px;
+}
+
+.faq__title span {
+    display: block;
+
+    color: var(--red-light);
+
+    font-size: .7em;
+
+    letter-spacing: 9px;
+
+    margin-top: 8px;
+}
+
+.faq__list {
+    max-width: 950px;
+
+    margin: 0 auto;
+}
+
+.faq__item {
+    border-bottom:
+        1px solid rgba(255,255,255,.09);
+
+    position: relative;
+}
+
+.faq__question {
+    width: 100%;
+
+    min-height: 75px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #ddd7da;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    padding: 22px 10px;
+
+    transition:
+        color var(--transition);
+}
+
+.faq__question:hover {
+    color: #fff;
+}
+
+.faq__icon {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(184,175,180,.25);
+
+    border-radius: 50%;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 19px;
+
+    color: #aaa1a6;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+}
+
+.faq__answer {
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+        max-height .5s ease,
+        opacity .35s ease;
+}
+
+.faq__answer p {
+    padding:
+        0 60px
+        25px 10px;
+
+    color: #999196;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+.faq__item.active {
+    border-bottom-color:
+        rgba(114,15,29,.4);
+
+    box-shadow:
+        0 15px 30px rgba(114,15,29,.025);
+}
+
+.faq__item.active .faq__icon {
+    transform: rotate(45deg);
+
+    color: #fff;
+
+    border-color:
+        rgba(156,27,44,.65);
+
+    background:
+        rgba(114,15,29,.15);
+
+    box-shadow:
+        0 0 18px rgba(114,15,29,.18);
+}
+
+.faq__item.active .faq__answer {
+    max-height: 300px;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   REVIEWS
+========================================================= */
+
+.reviews {
+    padding:
+        130px 40px
+        140px;
+}
+
+.reviews__content {
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.reviews__slider {
+    margin:
+        55px auto
+        20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 25px;
+}
+
+.reviews__photo {
+    position: relative;
+
+    width: min(620px, 72vw);
+
+    max-height: 720px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        rgba(0,0,0,.25);
+
+    border:
+        1px solid rgba(184,175,180,.16);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.55),
+        0 0 30px rgba(114,15,29,.07);
+
+    touch-action: pan-y;
+
+    user-select: none;
+}
+
+.reviews__photo::before,
+.reviews__photo::after {
+    content: "";
+
+    position: absolute;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+/* декоративные уголки */
+
+.reviews__photo::before {
+    inset: 9px;
+
+    border:
+        1px solid rgba(184,175,180,.11);
+}
+
+.reviews__photo::after {
+    width: 80px;
+    height: 80px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(114,15,29,.08),
+            transparent 70%
+        );
+}
+
+
+/* САМА ФОТОГРАФИЯ */
+
+.reviews__photo img {
+    width: 100%;
+
+    height: auto;
+
+    max-height: 720px;
+
+    display: block;
+
+    object-fit: contain;
+
+    position: relative;
+
+    z-index: 1;
+
+    will-change:
+        transform,
+        opacity,
+        filter;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    transition:
+        opacity .4s ease,
+        transform .4s cubic-bezier(.22,.61,.36,1),
+        filter .4s ease;
+}
+
+
+/* =========================================================
+   ПЛАВНЫЙ ПЕРЕХОД ОТЗЫВОВ
+========================================================= */
+
+.review-next {
+    animation:
+        reviewNext .42s cubic-bezier(.22,.61,.36,1);
+}
+
+.review-prev {
+    animation:
+        reviewPrev .42s cubic-bezier(.22,.61,.36,1);
+}
+
+@keyframes reviewNext {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(35px)
+            scale(.985);
+
+        filter: blur(5px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+
+        filter: blur(0);
+    }
+}
+
+@keyframes reviewPrev {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(-35px)
+            scale(.985);
+
+        filter: blur(5px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+
+        filter: blur(0);
+    }
+}
+
+
+/* =========================================================
+   СТРЕЛКИ
+========================================================= */
+
+.reviews__arrow {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(184,175,180,.25);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color: #c5bdc1;
+
+    font-size: 31px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        box-shadow var(--transition);
+}
+
+.reviews__arrow:hover {
+    transform: scale(1.08);
+
+    background:
+        rgba(114,15,29,.18);
+
+    border-color:
+        rgba(156,27,44,.7);
+
+    color: #fff;
+
+    box-shadow:
+        0 0 22px rgba(114,15,29,.2);
+}
+
+.reviews__counter {
+    color: #8f888c;
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+#currentReview {
+    color: #e3dce0;
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location {
+    padding:
+        130px 60px
+        140px;
+}
+
+.location__content {
+    max-width: 1050px;
+
+    margin: 0 auto;
+}
+
+.location__info {
+    margin-top: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 40px;
+
+    padding: 30px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.015);
+}
+
+.location__label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    color: var(--red-light);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+.location__address h3 {
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 22px;
+
+    font-weight: 500;
+}
+
+.location__address p {
+    margin-top: 6px;
+
+    color: var(--text-soft);
+
+    font-size: 14px;
+}
+
+.location__details {
+    display: flex;
+
+    gap: 45px;
+}
+
+.location__details div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    text-align: center;
+}
+
+.location__details span {
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    color: #8f888c;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+.location__details strong {
+    font-size: 20px;
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.location__map {
+    width: 100%;
+
+    height: 430px;
+
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(184,175,180,.15);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45);
+
+    position: relative;
+}
+
+.location__map::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    box-shadow:
+        inset 0 0 70px rgba(0,0,0,.45);
+
+    z-index: 2;
+}
+
+.location__map iframe {
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    filter:
+        grayscale(.8)
+        contrast(1.05)
+        brightness(.72);
+
+    transition:
+        filter .6s ease;
+}
+
+.location__map:hover iframe {
+    filter:
+        grayscale(.35)
+        contrast(1.05)
+        brightness(.82);
+}
+
+
+/* =========================================================
+   ROUTE
+========================================================= */
+
+.location__route {
+    margin-top: 15px;
+
+    width: 100%;
+
+    min-height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 25px;
+
+    border:
+        1px solid rgba(184,175,180,.2);
+
+    background:
+        rgba(255,255,255,.018);
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #bbb3b7;
+
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        color var(--transition);
+}
+
+.location__route:hover {
+    background:
+        rgba(114,15,29,.14);
+
+    border-color:
+        rgba(156,27,44,.55);
+
+    color: #fff;
+}
+
+.location__arrow {
+    font-size: 20px;
+
+    transition:
+        transform var(--transition);
+}
+
+.location__route:hover .location__arrow {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    padding:
+        90px 30px
+        60px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center top,
+            rgba(114,15,29,.12),
+            transparent 45%
+        ),
+        #080709;
+
+    border-top:
+        1px solid rgba(184,175,180,.08);
+}
+
+.footer__content {
+    max-width: 800px;
+
+    margin: 0 auto;
+}
+
+.footer__brand {
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size: 25px;
+
+    letter-spacing: 8px;
+
+    color: #e8e2e5;
+
+    text-shadow:
+        0 0 25px rgba(114,15,29,.25);
+}
+
+.footer__title {
+    margin-top: 18px;
+
+    font-family:
+        "Cinzel",
+        Georgia,
+        serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #aaa1a6;
+}
+
+.footer__line {
+    width: 150px;
+
+    height: 1px;
+
+    margin: 35px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(156,27,44,.7),
+            transparent
+        );
+}
+
+.footer__copyright {
+    color: #686166;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   КНОПКА НАВЕРХ
+========================================================= */
+
+.floating-top {
+    position: fixed;
+
+    right: 28px;
+    bottom: 28px;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(184,175,180,.3);
+
+    border-radius: 50%;
+
+    background:
+        rgba(12,9,12,.85);
+
+    backdrop-filter:
+        blur(10px);
+
+    color: #cfc7cb;
+
+    font-size: 20px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(15px);
+
+    transition:
+        opacity var(--transition),
+        visibility var(--transition),
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.floating-top.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+.floating-top:hover {
+    border-color:
+        rgba(156,27,44,.7);
+
+    box-shadow:
+        0 0 25px rgba(114,15,29,.25);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .header__container {
+        padding:
+            18px 25px;
+    }
+
+    .header__nav {
+        gap: 20px;
+    }
+
+    .header__logo {
+        width: 120px;
+    }
+
+    .header__list {
+        gap: 22px;
+    }
+
+    .header__list-link {
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .header__social {
+        width: 34px;
+        height: 34px;
+    }
+
+    .header__social img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .hero {
+        padding:
+            130px 25px
+            90px;
+    }
+
+    .price,
+    .faq,
+    .reviews,
+    .location {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .price__item {
+        padding: 22px;
+    }
+
+    .reviews__slider {
+        gap: 12px;
+    }
+
+    .reviews__arrow {
+        width: 42px;
+        height: 42px;
+
+        font-size: 27px;
+    }
+
+    .reviews__photo {
+        width: min(600px, 76vw);
+    }
+
+    .location__info {
+        padding: 25px;
+    }
+}
+
+
+/* =========================================================
+   ТЕЛЕФОН
+========================================================= */
+
+@media (max-width: 600px) {
+
+    body::before {
+        opacity: .035;
+    }
+
+
+    /* HEADER */
+
+    .header__container {
+        padding:
+            15px 17px;
+    }
+
+    .header__nav {
+        gap: 10px;
+    }
+
+    .header__logo {
+        width: 105px;
+    }
+
+    .header__list {
+        gap: 12px;
+    }
+
+    .header__list-link {
+        font-size: 8px;
+
+        letter-spacing: 1px;
+    }
+
+    .header__list-link::before {
+        display: none;
+    }
+
+    .header__socials {
+        gap: 6px;
+    }
+
+    .header__social {
+        width: 30px;
+        height: 30px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 100svh;
+
+        padding:
+            120px 20px
+            80px;
+    }
+
+    .hero::before {
+        width: 380px;
+        height: 380px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(45px, 15vw, 82px);
+
+        letter-spacing:
+            clamp(5px, 2vw, 10px);
+
+        margin-bottom: 22px;
+    }
+
+    .hero__small {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+    .hero__text {
+        font-size: 13px;
+
+        line-height: 1.7;
+
+        max-width: 330px;
+    }
+
+    .hero__button {
+        min-width: 185px;
+
+        min-height: 52px;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+
+    /* SECTIONS */
+
+    .price,
+    .faq,
+    .reviews,
+    .location {
+        padding-top: 100px;
+        padding-bottom: 110px;
+    }
+
+    .price__title,
+    .faq__title,
+    .reviews__title,
+    .location__title {
+        font-size: 37px;
+
+        letter-spacing: 4px;
+    }
+
+
+    /* PRICE */
+
+    .price__list {
+        margin-top: 40px;
+    }
+
+    .price__item {
+        padding:
+            19px 17px;
+
+        gap: 15px;
+    }
+
+    .price__item h3 {
+        font-size: 14px;
+    }
+
+    .price__item p {
+        font-size: 11px;
+    }
+
+    .price__item strong {
+        font-size: 11px;
+    }
+
+    .price__important {
+        padding:
+            20px 17px;
+    }
+
+    .price__important span {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+    .price__education {
+        padding:
+            20px 17px;
+    }
+
+    .price__education h3 {
+        font-size: 14px;
+    }
+
+    .price__education p {
+        font-size: 11px;
+    }
+
+    .price__education strong {
+        font-size: 11px;
+    }
+
+
+    /* FAQ */
+
+    .faq__question {
+        min-height: 68px;
+
+        font-size: 14px;
+
+        padding:
+            18px 3px;
+    }
+
+    .faq__icon {
+        width: 30px;
+        height: 30px;
+
+        font-size: 17px;
+    }
+
+    .faq__answer p {
+        padding:
+            0 35px
+            22px 3px;
+
+        font-size: 12px;
+
+        line-height: 1.7;
+    }
+
+
+    /* REVIEWS */
+
+    .reviews__slider {
+        gap: 7px;
+
+        margin-top: 40px;
+    }
+
+    .reviews__photo {
+        width: calc(100vw - 105px);
+
+        max-height: 560px;
+    }
+
+    .reviews__photo::before {
+        inset: 5px;
+    }
+
+    .reviews__arrow {
+        width: 38px;
+        height: 38px;
+
+        font-size: 25px;
+    }
+
+
+    /* LOCATION */
+
+    .location__info {
+        margin-top: 40px;
+
+        padding:
+            20px 17px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+    }
+
+    .location__address h3 {
+        font-size: 17px;
+    }
+
+    .location__details {
+        gap: 35px;
+    }
+
+    .location__map {
+        height: 340px;
+    }
+
+    .location__route {
+        min-height: 54px;
+
+        padding:
+            0 18px;
+
+        font-size: 9px;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        padding:
+            70px 20px
+            45px;
+    }
+
+    .footer__brand {
+        font-size: 20px;
+
+        letter-spacing: 6px;
+    }
+
+    .footer__title {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+
+    /* TOP */
+
+    .floating-top {
+        width: 42px;
+        height: 42px;
+
+        right: 17px;
+        bottom: 17px;
+
+        font-size: 17px;
+    }
+}
+
+
+/* =========================================================
+   ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .header__logo {
+        width: 90px;
+    }
+
+    .header__list {
+        gap: 8px;
+    }
+
+    .header__list-link {
+        font-size: 7px;
+    }
+
+    .header__social {
+        width: 27px;
+        height: 27px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .reviews__photo {
+        width: calc(100vw - 90px);
+    }
+
+    .reviews__arrow {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: .01ms !important;
+    }
+}

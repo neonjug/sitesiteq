@@ -1,0 +1,675 @@
+:root {
+    --background: #0d0b0f;
+    --dark: #08070a;
+
+    --text: #f5f1f4;
+    --gray: #6f6870;
+    --light-gray: #aaa1aa;
+
+    --red: #760707;
+    --red-hover: #990909;
+
+    --border: #2c2630;
+    --purple: #945879;
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    min-height: 100%;
+    background: var(--background);
+}
+
+
+body {
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(148, 88, 121, .08),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(118, 7, 7, .06),
+            transparent 30%
+        ),
+        var(--background);
+
+    color: var(--text);
+
+    font-family:
+        "Science Gothic",
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =====================================================
+   ОСНОВА
+===================================================== */
+
+.booking {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding:
+        45px 20px 60px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   ДЕКОРАТИВНОЕ СВЕЧЕНИЕ
+===================================================== */
+
+.booking::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    top: 180px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(148, 88, 121, .06),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+    animation:
+        pulseGlow 7s ease-in-out infinite;
+}
+
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        opacity: .55;
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform:
+            translateX(-50%)
+            scale(1.08);
+    }
+}
+
+
+/* =====================================================
+   ЛОГО
+===================================================== */
+
+.booking__logo-link {
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    text-decoration: none;
+}
+
+
+.booking__logo {
+    display: block;
+
+    width: 230px;
+    height: auto;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(148, 88, 121, .08)
+        );
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
+
+
+.booking__logo-link:hover
+.booking__logo {
+    transform: scale(1.03);
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(148, 88, 121, .2)
+        );
+}
+
+
+/* =====================================================
+   ОСНОВНОЙ КОНТЕНТ
+===================================================== */
+
+.booking__content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    max-width: 600px;
+
+    margin-top: 20px;
+
+    padding:
+        45px 40px 40px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 16, 23, .88),
+            rgba(12, 10, 14, .92)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.055);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.45),
+        0 0 50px
+        rgba(148,88,121,.025);
+
+    backdrop-filter:
+        blur(12px);
+
+    animation:
+        contentAppear .8s ease both;
+}
+
+
+@keyframes contentAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   ДЕКОРАТИВНЫЕ УГОЛКИ
+===================================================== */
+
+.booking__content::before,
+.booking__content::after {
+    content: "";
+
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+
+    pointer-events: none;
+}
+
+
+.booking__content::before {
+    top: 18px;
+    left: 18px;
+
+    border-top:
+        1px solid rgba(148,88,121,.4);
+
+    border-left:
+        1px solid rgba(148,88,121,.4);
+}
+
+
+.booking__content::after {
+    right: 18px;
+    bottom: 18px;
+
+    border-right:
+        1px solid rgba(148,88,121,.4);
+
+    border-bottom:
+        1px solid rgba(148,88,121,.4);
+}
+
+
+/* =====================================================
+   КАРТИНКА
+===================================================== */
+
+.booking__triabl-link {
+    display: inline-block;
+
+    text-decoration: none;
+}
+
+
+.booking__triabl {
+    display: block;
+
+    width: 120px;
+    max-width: 100%;
+
+    margin: 0 auto 15px;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    opacity: .92;
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(148,88,121,.12)
+        );
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease,
+        filter .35s ease;
+}
+
+
+.booking__triabl-link:hover
+.booking__triabl {
+    opacity: 1;
+
+    transform:
+        translateY(-3px)
+        scale(1.04);
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(148,88,121,.25)
+        );
+}
+
+
+/* =====================================================
+   BARASHW HAIR
+===================================================== */
+
+.booking__small-title {
+    color: var(--purple);
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 15px
+        rgba(148,88,121,.3);
+}
+
+
+/* =====================================================
+   ЗАГОЛОВОК
+===================================================== */
+
+.booking__title {
+    margin-top: 12px;
+
+    color: white;
+
+    font-size:
+        clamp(48px, 8vw, 72px);
+
+    font-weight: 500;
+
+    letter-spacing: 3px;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 35px
+        rgba(148,88,121,.08);
+}
+
+
+/* =====================================================
+   ПОДЗАГОЛОВОК
+===================================================== */
+
+.booking__subtitle {
+    margin-top: 18px;
+
+    color: var(--gray);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   СОЦСЕТИ
+===================================================== */
+
+.booking__socials {
+    width: 100%;
+
+    margin-top: 35px;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+.booking__social {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 70px;
+
+    padding:
+        0 25px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #141117,
+            #0e0c10
+        );
+
+    border:
+        1px solid #302a33;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.25);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.booking__social img {
+    width: 34px;
+    height: 34px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+
+    transition:
+        transform .3s ease;
+}
+
+
+.booking__social > span:not(.booking__arrow) {
+    color: #eee9ed;
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+
+.booking__arrow {
+    margin-left: auto;
+
+    color: #817582;
+
+    font-size: 23px;
+
+    transition:
+        transform .3s ease,
+        color .3s ease;
+}
+
+
+.booking__social:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #19141c,
+            #100d12
+        );
+
+    border-color:
+        rgba(148,88,121,.5);
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.35),
+        0 0 30px
+        rgba(148,88,121,.04);
+}
+
+
+.booking__social:hover img {
+    transform:
+        scale(1.08)
+        rotate(-3deg);
+}
+
+
+.booking__social:hover
+.booking__arrow {
+    color: white;
+
+    transform:
+        translate(4px,-4px);
+}
+
+
+/* =====================================================
+   НАЗАД
+===================================================== */
+
+.booking__back {
+    display: inline-block;
+
+    margin-top: 30px;
+
+    color: #625b63;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition:
+        color .25s ease,
+        transform .25s ease;
+}
+
+
+.booking__back:hover {
+    color: white;
+
+    transform:
+        translateX(-3px);
+}
+
+
+/* =====================================================
+   АНИМАЦИЯ ПРИ НАВЕДЕНИИ
+===================================================== */
+
+.booking__social {
+    animation:
+        socialAppear .7s ease both;
+
+    animation-delay: .25s;
+}
+
+
+@keyframes socialAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .booking {
+        padding:
+            30px 15px 45px;
+    }
+
+
+    .booking__logo {
+        width: 190px;
+    }
+
+
+    .booking__content {
+        margin-top: 15px;
+
+        padding:
+            35px 20px 30px;
+
+        border-radius: 13px;
+    }
+
+
+    .booking__triabl {
+        width: 95px;
+    }
+
+
+    .booking__title {
+        font-size: 48px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .booking__subtitle {
+        font-size: 14px;
+    }
+
+
+    .booking__social {
+        min-height: 64px;
+
+        padding:
+            0 18px;
+    }
+
+
+    .booking__social img {
+        width: 30px;
+        height: 30px;
+    }
+
+
+    .booking__social > span:not(.booking__arrow) {
+        font-size: 15px;
+    }
+
+}
+
+
+/* =====================================================
+   МАЛЕНЬКИЕ ТЕЛЕФОНЫ
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .booking__logo {
+        width: 165px;
+    }
+
+
+    .booking__content {
+        padding:
+            30px 16px 27px;
+    }
+
+
+    .booking__title {
+        font-size: 42px;
+    }
+
+
+    .booking__small-title {
+        font-size: 10px;
+
+        letter-spacing: 4px;
+    }
+
+}
